@@ -1,0 +1,802 @@
+
+    /* General Reset and Body Style */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    }
+
+    /* Dashboard Container */
+    .dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+    /* background-color: hsla(210, 4%, 11%, 1); */
+    background-image: url('/images/shape-1.png'); /* Path to the uploaded image */
+    background-color: hsla(210, 4%, 9%, 1);
+    color: white;
+    width: 250px;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar .logo {
+    text-align: center;
+    margin-bottom: 30px;
+    }
+
+    .sidebar .logo h2 {
+    color: #ecf0f1;
+    }
+
+    .sidebar ul {
+    list-style: none;
+    padding: 0;
+    }
+
+    .sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    .sidebar ul li:hover {
+    background-color: hsl(38, 61%, 73%);
+    color: black;
+    }
+
+    .sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    }
+
+    /* Main Content Area */
+    .main-content {
+    margin-left: 250px;
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    transition: margin-left 0.3s ease-in-out;
+    }
+
+    /* Header */
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: hsla(210, 4%, 11%, 1); */
+    background-image: url('/images/shape-1.png'); /* Path to the uploaded image */
+    background-color: hsla(210, 4%, 9%, 1);
+    padding: 15px;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    }
+
+    .header .title {
+    font-size: 24px;
+    }
+
+    .header .user-info {
+    display: flex;
+    align-items: center;
+    }
+
+    .header .user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    }
+
+    .dashboard-cards .card {
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    }
+
+    .dashboard-cards .card:hover {
+    transform: scale(1.05);
+    }
+
+    .card .card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    }
+
+    .card .card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2980b9;
+    }
+
+    /* Footer */
+    .footer {
+    text-align: center;
+    padding: 20px;
+    /* background-color: hsla(210, 4%, 11%, 1); */
+    background-image: url('/images/shape-1.png'); /* Path to the uploaded image */
+    background-color: hsla(210, 4%, 9%, 1);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto; /* This pushes the footer to the bottom */
+    }
+
+    /* User Table */
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    th,
+    td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+    background-color: #d6eeee;
+    }
+
+    .user-table th {
+    background-color: #d3d3d3;
+    color: rgb(0, 0, 0);
+    }
+
+    .user-table thead th {
+    text-align: center; /* Center text horizontally */
+    vertical-align: middle; /* Center text vertically */
+    }
+
+    /* Logout Modal */
+    .logout-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    }
+
+    .logout-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    }
+
+    .logout-modal-content h2 {
+    margin-bottom: 20px;
+    }
+
+    .logout-modal-content .message {
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+
+    .logout-modal-content .icon {
+    font-size: 40px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+    }
+
+    .logout-modal-content .btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    .logout-modal-content .btn:hover {
+    background-color: #2980b9;
+    }
+
+    .rounded-profile {
+    border-radius: 50px;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+    .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+    .user-table th,
+    .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+
+    .user-table td {
+    padding: 5px 5px;
+    text-align: center;
+    }
+
+    .action-btn {
+    padding: 5px 1px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 10px;
+    margin-right: 5px;
+    }
+    /* Icon Colors */
+    .update {
+    color: #9b9b9b; /* Green for Update */
+    }
+    .delete {
+    color: #f44336; /* Red for Delete */
+    }
+    /* Icon size */
+    .fas {
+    font-size: 18px;
+    }
+    .update:hover {
+    color: #fd9b08;
+    }
+    .delete:hover {
+    color: #d32f2f;
+    }
+
+    /* Modal Styling */
+    .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    }
+
+    .modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 450px; /* You can adjust the width as needed */
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    }
+
+    /* Close Icon */
+    .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    }
+
+    .close:hover {
+    color: #333;
+    }
+
+    /* Modal Header */
+    .modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    }
+
+    /* Form Styling */
+    .modal-body {
+    padding: 0;
+    }
+
+    .form-group {
+    margin-bottom: 15px;
+    }
+
+    label {
+    font-weight: 600;
+    color: #555;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='url'] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+    }
+
+    input[type='text']:focus,
+    input[type='email']:focus,
+    input[type='tel']:focus,
+    input[type='url']:focus {
+    border-color: #4caf50;
+    outline: none;
+    }
+
+    /* Action Buttons */
+    .modal-footer {
+    text-align: center;
+    margin-top: 20px;
+    }
+
+    button {
+    font-size: 16px;
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    }
+
+    .btn-save {
+    background-color: #4caf50;
+    color: white;
+    }
+
+    .btn-save:hover {
+    background-color: #45a049;
+    }
+
+    .btn-close {
+    background-color: #f44336;
+    color: white;
+    }
+
+    .btn-close:hover {
+    background-color: #e60000;
+    }
+    /* Container for the image and upload button */
+    .image-upload-container {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    }
+
+    /* Previewing the image */
+    .image-preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 3px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+    }
+
+    /* Camera Icon Button */
+    .camera-icon-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    }
+
+    .camera-icon-container:hover {
+    background: rgba(0, 0, 0, 0.7);
+    }
+
+    .camera-icon-container:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+    }
+
+    /* Camera SVG Icon */
+    #uploadBtn svg {
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+    }
+
+    /* Hover effect when image is hovered */
+    .image-preview:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Upload text under the image */
+    .image-upload-info {
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 8px;
+    opacity: 0.8;
+    }
+
+    .upload-text {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 16px; /* Adjust font size */
+    }
+
+    /* Optional: Additional effect when an image is selected */
+    .image-preview.selected {
+    border-color: #28a745;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+    }
+
+    .image-preview.selected img {
+    opacity: 0.7;
+    }
+
+    /** validate message error */
+    .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    }
+
+    .swal-small-popup {
+    height: 120px; /* Smaller height */
+    width: 200px; /* Smaller width, matching the JS width */
+    padding: 10px; /* Reduce padding */
+    border-radius: 8px; /* Optional: Slightly rounded corners */
+    font-size: 12px; /* Smaller overall font size */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+    }
+
+    .swal-small-title {
+    font-size: 10px; /* Smaller font size for title */
+    line-height: 1.1; /* Compact line height */
+    margin-top: 5px; /* Adjust spacing */
+    }
+
+    .btn-cancel {
+    background: red;
+    color: white;
+    }
+
+    /* reserve table */
+    #reserve-table-section {
+    display: none; /* Initially hidden */
+    margin-top: 20px;
+    }
+
+    #report-table {
+    width: 100%;
+    border-collapse: collapse;
+    }
+
+    #report-table th,
+    #report-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    }
+
+    #report-table th {
+    background-color: #f4f4f4;
+    }
+
+    /* Basic styling for the reports content */
+    #reports-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    }
+
+    /* Styling for the reservation table */
+    .reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    }
+
+    /* Styling for table headers */
+    .reservation-table thead {
+    /* background-color: #4caf50;
+    color: white; */
+
+    background-color: #d3d3d3;
+    color: rgb(0, 0, 0);
+    text-align: center; /* Center horizontally */
+    vertical-align: middle; /* Center vertically */
+    }
+
+    .reservation-table th,
+    .reservation-table td {
+    padding: 12px 15px;
+    text-align: left;
+    }
+
+    .reservation-table td {
+    padding: 5px 5px;
+    text-align: center;
+    }
+
+    .reservation-table thead th {
+    text-align: center; /* Center text horizontally */
+    vertical-align: middle; /* Center text vertically */
+    }
+
+    .reservation-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+    }
+
+    /* Hover effect for table rows */
+    .reservation-table tr:hover {
+    background-color: #ddd;
+    }
+
+    /* Responsive table */
+    @media screen and (max-width: 600px) {
+    .reservation-table th,
+    .reservation-table td {
+        padding: 8px 10px;
+    }
+    }
+
+    /* Add this to your existing CSS file or within a <style> tag */
+    .pending-status {
+    /* background: rgb(255, 208, 0); */
+    color: rgb(255, 208, 0);
+    font: bold;
+    }
+
+    .success-status {
+    /* background: rgb(7, 219, 24); */
+    color: rgb(7, 219, 24);
+    font: bold;
+    }
+
+    /* Styling for the status button */
+    .status-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    }
+
+    .status-pending {
+    background-color: #ff8c00;
+    }
+
+    .status-success {
+    background-color: #008000;
+    }
+
+    .status-cancel {
+    background-color: #ff0000;
+    }
+
+    /* Reduce the size of the input field inside SweetAlert */
+    .swal2-input {
+    width: 460px !important; /* Set the desired width */
+    height: 40px !important; /* Set the desired height */
+    font-size: 14px !important; /* Adjust the font size */
+    padding: 5px !important; /* Adjust padding */
+    }
+
+
+    /* reserve Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .modal-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        position: relative;
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #ff0000;
+    }
+    
+    .modal-content h2 {
+        margin-top: 0;
+    }
+    
+    .modal-content form label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+    
+    .modal-content form input,
+    .modal-content form textarea,
+    .modal-content form select,
+    .modal-content form button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .modal-content form button {
+        background: #01b10a;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-left: 2px;
+    }
+
+
+    /* Style for input with suffix container */
+    .input-with-suffix {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    
+    .input-with-suffix input {
+        flex: 1;
+        padding-right: 50px; /* Adjust spacing for the suffix */
+    }
+    
+    .input-with-suffix .suffix {
+        position: absolute;
+        right: 10px;
+        color: #888; /* Gray color for the suffix text */
+        pointer-events: none; /* Prevent interaction */
+    }
+
+
+
+
+    /* Modal Styling */
+    #detailsModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 90%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .modal-body {
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Form Styling */
+    form div {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 16px;
+        color: #555;
+    }
+
+    /* Close button */
+    .close-btn {
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .close-btn:hover {
+        color: #d9534f;
+    }
+
+  
