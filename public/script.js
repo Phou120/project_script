@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /**
  * PRELOAD
  * 
@@ -170,6 +168,11 @@ window.addEventListener("mousemove", function (event) {
 });
 
 
+// header
+
+
+
+
 
 
 // reserve table
@@ -241,3 +244,11 @@ document.querySelector('a[href="#contact"]').addEventListener('click', function 
   targetSection.scrollIntoView({ behavior: 'smooth' });
 });
 
+
+
+// WhatsApp link
+document.addEventListener("DOMContentLoaded", () => {
+  const phoneNumber = "8562098995332"; // Replace with your number
+  const whatsappLink = `https://wa.me/${phoneNumber}`;
+  document.querySelector('.topbar-item.link').setAttribute('href', whatsappLink);
+});
