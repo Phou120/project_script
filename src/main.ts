@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { join } from 'path';
 import { ValidationPipe } from '@nestjs/common';
 import * as express from 'express';
+import { JoiValidationPipe } from './validates/joi-validation-pipe.validate';
 
 async function bootstrap() {
   const app = await NestFactory.create<any>(AppModule);
@@ -24,7 +25,9 @@ async function bootstrap() {
   });
 
   // Enable validation pipe globally to validate DTOs
-  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+  app.useGlobalPipes(
+    new ValidationPipe({ transform: true })
+  );
 
   await app.listen(3000);
 }

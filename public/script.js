@@ -176,7 +176,6 @@ window.addEventListener("mousemove", function (event) {
 
 
 // reserve table
-
 document.querySelector('.reservation-form').addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent the default form submission
 
@@ -199,9 +198,11 @@ document.querySelector('.reservation-form').addEventListener('submit', async (ev
       body: JSON.stringify(formData),
     });
 
+    // Clear previous error messages
+    document.querySelectorAll('.error-message').forEach(error => error.textContent = '');
+
     // Handle the response
     if (response.ok) {
-
       // Clear the form fields after submission
       document.querySelector('input[name="name"]').value = '';
       document.querySelector('input[name="email"]').value = '';
@@ -209,20 +210,28 @@ document.querySelector('.reservation-form').addEventListener('submit', async (ev
       document.querySelector('input[name="address"]').value = '';
       document.querySelector('textarea[name="message"]').value = '';
 
-      // Show success notification
-      await Swal.fire({
+      // Show success message
+      Swal.fire({
         title: 'Reserve Table!',
         text: 'Reserve Table Successfully.',
         icon: 'success',
-        showConfirmButton: false, // Hide the confirm button
-        timer: 1500, // Auto-close after 1.5 seconds
+        showConfirmButton: false,
+        timer: 1500,
       });
     } else {
+      // If response is not ok, parse error messages
       const error = await response.json();
-      Swal.fire({
-        title: 'Error!',
-        text: 'Reserve Table Error: ' + error.message,
-        icon: 'error',
+      console.log(error);
+
+      // Loop through each error and display it under the corresponding input field
+      error.error.forEach(err => {
+        const inputElement = document.querySelector(`input[name="${err.key}"], textarea[name="${err.key}"]`);
+        const errorMessageDiv = inputElement.parentElement.querySelector('.error-message');
+
+        if (inputElement && errorMessageDiv) {
+          // Display the error message
+          errorMessageDiv.textContent = err.message;
+        }
       });
     }
   } catch (err) {
@@ -230,6 +239,7 @@ document.querySelector('.reservation-form').addEventListener('submit', async (ev
     alert('An error occurred while submitting your reservation. Please try again.');
   }
 });
+
 
 
 
@@ -251,4 +261,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const phoneNumber = "8562098995332"; // Replace with your number
   const whatsappLink = `https://wa.me/${phoneNumber}`;
   document.querySelector('.topbar-item.link').setAttribute('href', whatsappLink);
+});
+
+
+
+// For the Read More Modal
+var readMoreModal = document.getElementById('readMoreModal');
+var readMoreBtn = document.getElementById('readMoreButton');
+var readMoreSpan = document.getElementById('closeReadMoreModal');
+
+// For the View All Menu Modal
+var menuModal = document.getElementById('menuModal');
+var viewAllMenuBtn = document.getElementById('viewAllMenuButton');
+var menuSpan = document.getElementById('closeMenuModal');
+
+// When the user clicks the "Read More" button, open the Read More modal
+readMoreBtn.addEventListener('click', function() {
+    readMoreModal.style.display = 'block'; // Show the modal
+});
+
+// When the user clicks on <span> (x) in Read More modal, close it
+readMoreSpan.addEventListener('click', function() {
+    readMoreModal.style.display = 'none'; // Close the modal
+});
+
+// When the user clicks anywhere outside of the Read More modal, close it
+window.addEventListener('click', function(event) {
+    if (event.target == readMoreModal) {
+        readMoreModal.style.display = 'none'; // Close the modal if clicked outside
+    }
+});
+
+// When the user clicks the "View All Menu" button, open the Menu modal
+viewAllMenuBtn.addEventListener('click', function() {
+    menuModal.style.display = 'block'; // Show the modal
+});
+
+// When the user clicks on <span> (x) in Menu modal, close it
+menuSpan.addEventListener('click', function() {
+    menuModal.style.display = 'none'; // Close the modal
+});
+
+// When the user clicks anywhere outside of the Menu modal, close it
+window.addEventListener('click', function(event) {
+    if (event.target == menuModal) {
+        menuModal.style.display = 'none'; // Close the modal if clicked outside
+    }
 });

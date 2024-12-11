@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nestjs-modules/mailer": "^2.0.2",
     "@nestjs/common": "^10.4.11",
     "@nestjs/config": "^3.3.0",
@@ -37,6 +38,7 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "hbs": "^4.2.0",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.16",
     "pg": "^8.13.1",
