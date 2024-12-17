@@ -270,11 +270,6 @@ var readMoreModal = document.getElementById('readMoreModal');
 var readMoreBtn = document.getElementById('readMoreButton');
 var readMoreSpan = document.getElementById('closeReadMoreModal');
 
-// For the View All Menu Modal
-var menuModal = document.getElementById('menuModal');
-var viewAllMenuBtn = document.getElementById('viewAllMenuButton');
-var menuSpan = document.getElementById('closeMenuModal');
-
 // When the user clicks the "Read More" button, open the Read More modal
 readMoreBtn.addEventListener('click', function() {
     readMoreModal.style.display = 'block'; // Show the modal
@@ -292,9 +287,18 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// When the user clicks the "View All Menu" button, open the Menu modal
-viewAllMenuBtn.addEventListener('click', function() {
+
+// For the View All Menu Modal
+var menuModal = document.getElementById('menuModal');
+var menuSpan = document.getElementById('closeMenuModal');
+
+// Add event listener to the document to handle all "View All Menu" button clicks
+document.addEventListener('click', function(event) {
+  // Check if the clicked element has the class 'viewAllMenuButton'
+  if (event.target.classList.contains('viewAllMenuButton')) {
+    console.log("object");
     menuModal.style.display = 'block'; // Show the modal
+  }
 });
 
 // When the user clicks on <span> (x) in Menu modal, close it

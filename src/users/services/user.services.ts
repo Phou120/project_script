@@ -4,7 +4,7 @@ import { User } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { EventBus } from '@nestjs/cqrs';
 import { RegisterSuccessEvent } from '../events/send-email.event';
-import { SendMailDto } from '../dto/user.dto';
+import { SendMail } from '../dto/user.dto';
 
 @Injectable()
 export class UserService {
@@ -15,7 +15,7 @@ export class UserService {
         private readonly _eventBus: EventBus,
     ) {}
 
-    async create(body: SendMailDto): Promise<any> {
+    async create(body: SendMail): Promise<any> {
         const user = this.userRepository.create({
             ...body,
         });

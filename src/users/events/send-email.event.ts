@@ -1,8 +1,8 @@
-import { SendMailDto } from "../dto/user.dto";
+import { SendMail } from "../dto/user.dto";
 
 export class RegisterSuccessEvent {
     constructor(
-      public readonly data: SendMailDto,
+      public readonly data: SendMail,
     ) {}
   }
   
